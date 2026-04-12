@@ -13,9 +13,6 @@ oxpus_dlext_fav:
 oxpus_dlext_feed:
     path: /dlext/feed
     defaults: { _controller: oxpus.dlext.feed:handle }
-oxpus_dlext_hacklist:
-    path: /hacklist
-    defaults: { _controller: oxpus.dlext.hacklist:handle }
 oxpus_dlext_help:
     path: /dlext/help
     defaults: { _controller: oxpus.dlext.help:handle }

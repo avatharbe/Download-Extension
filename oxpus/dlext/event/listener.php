@@ -223,22 +223,6 @@ class listener implements EventSubscriberInterface
 				'U_DL_SELF'		=> ($total_downloads) ? $dl_main_self : '',
 			]);
 
-			if ($this->config['dl_use_hacklist'])
-			{
-				$sql = 'SELECT id FROM ' . $this->dlext_table_downloads . '
-					WHERE hacklist = 1';
-				$result = $this->db->sql_query_limit($sql, 1);
-				$total_hl = $this->db->sql_affectedrows($result);
-				$this->db->sql_freeresult($result);
-
-				if ($total_hl)
-				{
-					$this->template->assign_vars([
-						'U_DL_HACKS_LIST'	=> $this->helper->route('oxpus_dlext_hacklist'),
-					]);
-				}
-			}
-
 			$this->_dl_reset_values();
 			$this->_dl_navi_links();
 			$this->_dl_purge_hotlinks();
@@ -285,12 +269,7 @@ class listener implements EventSubscriberInterface
 
 	public function core_viewonline_overwrite_location($event)
 	{
-		if (strpos($event['row']['session_page'], 'hacklist') !== false)
-		{
-			$event['location'] = $this->language->lang('DL_PAGE_DL_HACKSLIST');
-			$event['location_url'] = $this->helper->route('oxpus_dlext_hacklist');
-		}
-		else if (strpos($event['row']['session_page'], 'dlext') !== false)
+		if (strpos($event['row']['session_page'], 'dlext') !== false)
 		{
 			$event['location'] = $this->language->lang('DL_PAGE_DOWNLOADS');
 			$event['location_url'] = $this->helper->route('oxpus_dlext_index');
@@ -698,20 +677,6 @@ class listener implements EventSubscriberInterface
 			'S_DL_NAV_MAIN_OFTlB'		=> ($this->config['dl_nav_link_main'] == 'OFTlB') ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
 			'S_DL_NAV_MAIN_OFTlA'		=> ($this->config['dl_nav_link_main'] == 'OFTlA') ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
 
-			'S_DL_NAV_HACKS_NHQLB'		=> ($this->config['dl_nav_link_hacks'] == 'NHQLB') ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
-			'S_DL_NAV_HACKS_NHQLA'		=> ($this->config['dl_nav_link_hacks'] == 'NHQLA') ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
-			'S_DL_NAV_HACKS_OHNP' 		=> ($this->config['dl_nav_link_hacks'] == 'OHNP') ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
-			'S_DL_NAV_HACKS_OHNA' 		=> ($this->config['dl_nav_link_hacks'] == 'OHNA') ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
-			'S_DL_NAV_HACKS_NHUPP'		=> ($this->config['dl_nav_link_hacks'] == 'NHUPP') ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
-			'S_DL_NAV_HACKS_NHUP' 		=> ($this->config['dl_nav_link_hacks'] == 'NHUP') ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
-			'S_DL_NAV_HACKS_NHPLB'		=> ($this->config['dl_nav_link_hacks'] == 'NHPLB') ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
-			'S_DL_NAV_HACKS_NHPLA'		=> ($this->config['dl_nav_link_hacks'] == 'NHPLA') ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
-			'S_DL_NAV_HACKS_NHUA'		=> ($this->config['dl_nav_link_hacks'] == 'NHUA') ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
-			'S_DL_NAV_HACKS_NHUPA'		=> ($this->config['dl_nav_link_hacks'] == 'NHUPA') ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
-			'S_DL_NAV_HACKS_OFTzB'		=> ($this->config['dl_nav_link_hacks'] == 'OFTzB') ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
-			'S_DL_NAV_HACKS_OFTzA'		=> ($this->config['dl_nav_link_hacks'] == 'OFTzA') ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
-			'S_DL_NAV_HACKS_OFTlB'		=> ($this->config['dl_nav_link_hacks'] == 'OFTlB') ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
-			'S_DL_NAV_HACKS_OFTlA'		=> ($this->config['dl_nav_link_hacks'] == 'OFTlA') ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
 		]);
 	}
 

@@ -448,7 +448,7 @@ class acp_files_controller implements acp_files_interface
 
 		if ($action == '')
 		{
-			$sql = 'SELECT hacklist, hack_version, file_name, real_file, description, desc_uid, desc_bitfield, desc_flags, id, free, extern, test, cat, klicks, overall_klicks, file_traffic, file_size, approve
+			$sql = 'SELECT hack_version, file_name, real_file, description, desc_uid, desc_bitfield, desc_flags, id, free, extern, test, cat, klicks, overall_klicks, file_traffic, file_size, approve
 					FROM ' . $this->dlext_table_downloads . '
 				WHERE cat = ' . (int) $dl_cat . '
 				ORDER BY sort';
@@ -457,8 +457,7 @@ class acp_files_controller implements acp_files_interface
 
 			while ($row = $this->db->sql_fetchrow($result))
 			{
-				$hacklist		= ($row['hacklist'] == 1) ? $this->language->lang('YES') : $this->language->lang('NO');
-				$version		= $row['hack_version'];
+					$version		= $row['hack_version'];
 				$description	= $row['description'];
 				$file_id		= $row['id'];
 				$file_free		= $row['free'];
@@ -528,7 +527,6 @@ class acp_files_controller implements acp_files_interface
 					'DL_FILE_TRAFFIC'		=> $file_traffic,
 					'DL_UNAPPROVED'			=> $unapprove,
 					'DL_OVERALL_KLICKS'		=> $file_overall_klicks,
-					'DL_HACKLIST'			=> $hacklist,
 					'DL_VERSION'			=> $version,
 					'DL_FILE_NAME'			=> $file_name,
 
