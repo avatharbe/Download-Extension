@@ -76,11 +76,8 @@ class navigation implements navigation_interface
 			*/
 			$nav_string = [];
 
-			if ($this->nav_mode != 'hacks')
-			{
-				$nav_string['link'][] =  $this->helper->route('oxpus_dlext_index');
-				$nav_string['name'][] = $this->language->lang('DL_CAT_TITLE');
-			}
+			$nav_string['link'][] =  $this->helper->route('oxpus_dlext_index');
+			$nav_string['name'][] = $this->language->lang('DL_CAT_TITLE');
 
 			if ($this->cat_id)
 			{
@@ -160,10 +157,6 @@ class navigation implements navigation_interface
 				case 'search':
 					$nav_string['name'][] = $this->language->lang('SEARCH');
 					$nav_string['link'][] = $this->helper->route('oxpus_dlext_search');
-					break;
-				case 'hacks':
-					$nav_string['name'][] = $this->language->lang('DL_HACKS_LIST');
-					$nav_string['link'][] = $this->helper->route('oxpus_dlext_hacklist');
 					break;
 				case 'todo':
 					$nav_string['name'][] = $this->language->lang('DL_MOD_TODO');

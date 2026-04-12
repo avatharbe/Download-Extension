@@ -619,15 +619,6 @@ class details
 		$mod_desc				= $dl_files['mod_desc'];
 
 		/*
-		* hacklist
-		*/
-		$s_hacklist = $this->dlext_constants::DL_FALSE;
-		if ($dl_files['hacklist'] && $this->config['dl_use_hacklist'])
-		{
-			$s_hacklist = $this->dlext_constants::DL_TRUE;
-		}
-
-		/*
 		* Block for extra informations - The MOD Block ;-)
 		*/
 		$s_mod_test = $this->dlext_constants::DL_FALSE;
@@ -1117,7 +1108,6 @@ class details
 			'S_DL_EDIT_BUTTON'		=> $s_edit_button,
 			'S_DL_EDIT_THUMBS'		=> $s_edit_thumbs,
 			'S_DL_MOD_TODO'			=> $s_mod_todo,
-			'S_DL_HACKLIST'			=> $s_hacklist,
 			'S_DL_OPEN_PANEL'		=> ($view == 'comment' && $s_comments_tab) ? $this->dlext_constants::DL_DEFAULT_PANEL : $this->dlext_constants::DL_FALSE,
 			'S_DL_POST_COMMENT'		=> ($s_comments_tab && !$deny_post) ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
 

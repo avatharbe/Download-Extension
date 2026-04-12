@@ -185,7 +185,6 @@ class download implements download_interface
 		$file_free				= $dl_data_array['file_free'] = 			$this->request->variable('file_free', 0);
 		$file_version			= $dl_data_array['file_version'] = 			$this->request->variable('file_version', 0);
 		$file_option			= $dl_data_array['file_ver_opt'] = 			$this->request->variable('file_ver_opt', 0);
-		$hacklist				= $dl_data_array['hacklist'] = 				$this->request->variable('hacklist', 0);
 		$hack_author			= $dl_data_array['hack_author'] = 			$this->request->variable('hack_author', '', $this->dlext_constants::DL_TRUE);
 		$hack_author_email		= $dl_data_array['hack_author_email'] = 	$this->request->variable('hack_author_email', '', $this->dlext_constants::DL_TRUE);
 		$hack_author_web		= $dl_data_array['hack_author_website'] = 	$this->request->variable('hack_author_website', '', $this->dlext_constants::DL_TRUE);
@@ -637,7 +636,6 @@ class download implements download_interface
 			'free'					=> $file_free,
 			'extern'				=> $file_extern,
 			'cat'					=> $cat_id,
-			'hacklist'				=> $hacklist,
 			'hack_author'			=> $hack_author,
 			'hack_author_email'		=> $hack_author_email,
 			'hack_author_website'	=> $hack_author_web,
@@ -1044,7 +1042,6 @@ class download implements download_interface
 			$dl_extern				= $this->request->variable('file_extern', $dl_file['extern']);
 			$dl_extern_size			= $this->request->variable('file_extern_size', $dl_file['file_size']);
 			$file_name				= ($dl_extern) ? $this->request->variable('file_name', $dl_file['file_name'], $this->dlext_constants::DL_TRUE) : '';
-			$hacklist				= $this->request->variable('hacklist', $dl_file['hacklist']);
 			$hack_author			= $this->request->variable('hack_author', $dl_file['hack_author'], $this->dlext_constants::DL_TRUE);
 			$hack_author_email		= $this->request->variable('hack_author_email', $dl_file['hack_author_email'], $this->dlext_constants::DL_TRUE);
 			$hack_author_web		= $this->request->variable('hack_author_website', $dl_file['hack_author_website'], $this->dlext_constants::DL_TRUE);
@@ -1093,7 +1090,6 @@ class download implements download_interface
 			$dl_extern				= $this->request->variable('file_extern', 0);
 			$dl_extern_size			= $this->request->variable('file_extern_size', 0);
 			$file_name				= ($dl_extern) ? $this->request->variable('file_name', '', $this->dlext_constants::DL_TRUE) : '';
-			$hacklist				= $this->request->variable('hacklist', 0);
 			$hack_author			= $this->request->variable('hack_author', '', $this->dlext_constants::DL_TRUE);
 			$hack_author_email		= $this->request->variable('hack_author_email', '', $this->dlext_constants::DL_TRUE);
 			$hack_author_web		= $this->request->variable('hack_author_website', '', $this->dlext_constants::DL_TRUE);
@@ -1196,11 +1192,6 @@ class download implements download_interface
 		if ($df_id)
 		{
 			$this->template->assign_var('S_DL_VERSION_ON', $this->dlext_constants::DL_TRUE);
-		}
-
-		if ($this->config['dl_use_hacklist'] && $this->dlext_auth->user_admin())
-		{
-			$this->template->assign_var('S_DL_USE_HACKLIST', $this->dlext_constants::DL_TRUE);
 		}
 
 		if ($index[$cat_id]['allow_mod_desc'])
@@ -1325,7 +1316,6 @@ class download implements download_interface
 			'S_DL_CHECK_FREE'			=> $dl_free,
 			'S_DL_TRAFFIC_RANGE'		=> $data_range_select,
 			'S_DL_FILE_EXT_SIZE_RANGE'	=> $file_extern_size_range,
-			'S_DL_HACKLIST'				=> $hacklist,
 			'S_DL_UPLOAD_TRAFFIC'		=> $s_upload_traffic,
 			'S_DL_SELECT_VER_DEL'		=> $total_versions,
 			'S_DL_DOWNLOADS_ACTION'		=> $s_form_action,
@@ -1374,19 +1364,6 @@ class download implements download_interface
 			$this->template->assign_block_vars('dl_e_quote_select', [
 				'DL_VALUE'		=> $s_file_ext_size_range[$i]['value'],
 				'DL_LANG'		=> $s_file_ext_size_range[$i]['lang'],
-			]);
-		}
-
-		$s_hacklist = [];
-		$s_hacklist[] = ['value' => $this->dlext_constants::DL_HACKLIST_NO,		'lang'	=> $this->language->lang('NO')];
-		$s_hacklist[] = ['value' => $this->dlext_constants::DL_HACKLIST_YES,	'lang'	=> $this->language->lang('YES')];
-		$s_hacklist[] = ['value' => $this->dlext_constants::DL_HACKLIST_EXTRA,	'lang'	=> $this->language->lang('DL_MOD_LIST_SHORT')];
-
-		for ($i = 0; $i < count($s_hacklist); ++$i)
-		{
-			$this->template->assign_block_vars('dl_hacklist_select', [
-				'DL_VALUE'		=> $s_hacklist[$i]['value'],
-				'DL_LANG'		=> $s_hacklist[$i]['lang'],
 			]);
 		}
 

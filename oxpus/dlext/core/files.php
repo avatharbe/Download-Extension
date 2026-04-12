@@ -432,7 +432,6 @@ class files implements files_interface
 			'long_desc',
 			'sort',
 			'cat',
-			'hacklist',
 			'hack_author',
 			'hack_author_email',
 			'hack_author_website',

@@ -79,21 +79,6 @@ services:
             - '@oxpus.dlext.core.status'
             - '@oxpus.dlext.core.format'
             - '@oxpus.dlext.helpers.constants'
-    oxpus.dlext.hacklist:
-        class: oxpus\dlext\controller\hacklist
-        public: true
-        arguments:
-            - '%core.root_path%'
-            - '%core.php_ext%'
-            - '@request'
-            - '@config'
-            - '@language'
-            - '@template'
-            - '@controller.helper'
-            - '@pagination'
-            - '@oxpus.dlext.core.hacklist'
-            - '@oxpus.dlext.helpers.footer'
-            - '@oxpus.dlext.helpers.constants'
     oxpus.dlext.help:
         class: oxpus\dlext\controller\help
         public: true

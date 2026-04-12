@@ -56,12 +56,6 @@ class constants
 	const DL_FOOTER_STATS_GUESTS_USER = 1;
 	const DL_FOOTER_STATS_OFF = 0;
 
-	const DL_HACKLIST_EXTRA = 2;
-	const DL_HACKLIST_NO = 0;
-	const DL_HACKLIST_SORT_AUTHOR = 2;
-	const DL_HACKLIST_SORT_DESC = 1;
-	const DL_HACKLIST_YES = 1;
-
 	const DL_HOTLINK_DETAILS = 1;
 	const DL_HOTLINK_MESSAGE = 0;
 
