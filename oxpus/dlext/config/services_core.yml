@@ -20,7 +20,6 @@ services:
             - '@dbal.conn'
             - '@oxpus.dlext.helpers.constants'
             - '%oxpus.dlext.tables.dl_auth%'
-            - '%oxpus.dlext.tables.dl_cat_traf%'
             - '%oxpus.dlext.tables.dl_ext_blacklist%'
             - '%oxpus.dlext.tables.downloads%'
             - '%oxpus.dlext.tables.dl_cat%'
@@ -83,7 +82,6 @@ services:
             - '@oxpus.dlext.core.physical'
             - '@oxpus.dlext.core.topic'
             - '@oxpus.dlext.helpers.constants'
-            - '@oxpus.dlext.fields.fields'
             - '%oxpus.dlext.tables.dl_favorites%'
             - '%oxpus.dlext.tables.dl_stats%'
             - '%oxpus.dlext.tables.dl_ver_files%'
@@ -120,14 +118,6 @@ services:
             - '@language'
             - '@request'
             - '@oxpus.dlext.helpers.constants'
-    oxpus.dlext.core.hacklist:
-        class: oxpus\dlext\core\hacklist
-        public: true
-        arguments:
-            - '@dbal.conn'
-            - '@oxpus.dlext.core.auth'
-            - '%oxpus.dlext.tables.downloads%'
-            - '%oxpus.dlext.tables.dl_cat%'
     oxpus.dlext.core.main:
         class: oxpus\dlext\core\main
         public: true

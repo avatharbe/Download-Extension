@@ -24,7 +24,6 @@ class upload
 	protected $dlext_main;
 	protected $dlext_physical;
 	protected $dlext_footer;
-	protected $dlext_fields;
 
 	/**
 	 * Constructor
