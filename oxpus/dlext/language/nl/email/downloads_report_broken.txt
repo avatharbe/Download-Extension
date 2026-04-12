@@ -1,0 +1,13 @@
+Subject: Defecte download
+
+Hallo {{ USERNAME }},
+
+U ontvangt deze e-mail omdat "{{ REPORTER }}" een defecte download heeft gemeld op "{{ SITENAME }}".
+Gebruik de volgende link om deze melding te controleren:
+
+---------------------------
+{{ U_DOWNLOAD }}
+{{ REPORT_NOTIFY_TEXT }}
+---------------------------
+
+{{ EMAIL_SIG }}

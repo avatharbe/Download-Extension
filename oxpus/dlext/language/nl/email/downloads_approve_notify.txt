@@ -1,0 +1,18 @@
+Subject: Nieuwe download
+
+Hallo {{ USERNAME }},
+
+U ontvangt deze e-mail omdat er een nieuwe of bewerkte download is op "{{ SITENAME }}" in de categorie "{{ CATEGORY }}" die wacht op goedkeuring:
+
+---------------------------
+{{ DOWNLOAD }}
+{{ DESCRIPTION }}
+---------------------------
+
+Als u deze download wilt goedkeuren, klik dan op de volgende link:
+
+{{ U_APPROVE }}
+
+U kunt er altijd voor kiezen om geen meldingen meer te ontvangen over nieuwe of bewerkte downloads door de betreffende instelling in uw gebruikersprofiel te wijzigen.
+
+{{ EMAIL_SIG }}
