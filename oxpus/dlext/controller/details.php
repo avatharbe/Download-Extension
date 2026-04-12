@@ -1073,7 +1073,6 @@ class details
 			}
 		}
 
-
 		/**
 		 * Calculate or Display additional data
 		 *

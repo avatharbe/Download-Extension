@@ -490,7 +490,6 @@ class mcp_manage
 							WHERE ' . $this->db->sql_in_set('dl_id', $dlo_id);
 						$this->db->sql_query($sql);
 
-
 						$sql = 'DELETE FROM ' . $this->dlext_table_dl_ratings . '
 							WHERE ' . $this->db->sql_in_set('dl_id', $dlo_id);
 						$this->db->sql_query($sql);

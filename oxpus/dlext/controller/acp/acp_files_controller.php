@@ -287,7 +287,6 @@ class acp_files_controller implements acp_files_interface
 					WHERE id = ' . (int) $df_id;
 				$this->db->sql_query($sql);
 
-
 				$sql = 'DELETE FROM ' . $this->dlext_table_dl_ratings . '
 					WHERE dl_id = ' . (int) $df_id;
 				$this->db->sql_query($sql);

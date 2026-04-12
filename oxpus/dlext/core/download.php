@@ -499,7 +499,6 @@ class download implements download_interface
 			$file_hash = $this->dlext_format->dl_hash($this->dlext_constants->get_value('files_dir') . '/downloads/' . $file_path . $new_real_file, 'file', $this->config['dl_file_hash_algo']);
 		}
 
-
 		// Stop here, if one or more errors exists
 		if ($dl_error)
 		{
@@ -775,7 +774,6 @@ class download implements download_interface
 
 		$dl_t_id = ($df_id) ? $df_id : $next_id;
 		$df_id = $dl_t_id;
-
 
 		if ($index[$cat_id]['statistics'])
 		{
