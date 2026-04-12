@@ -446,7 +446,6 @@ class files implements files_interface
 			'file_size',
 			'change_time',
 			'rating',
-			'file_traffic',
 			'overall_klicks',
 			'approve',
 			'add_time',

@@ -14,7 +14,8 @@ class remove_hacklist extends \phpbb\db\migration\migration
 {
 	public function effectively_installed()
 	{
-		return !$this->db_tools->sql_column_exists($this->table_prefix . 'downloads', 'hacklist');
+		return !$this->db_tools->sql_table_exists($this->table_prefix . 'downloads')
+			|| !$this->db_tools->sql_column_exists($this->table_prefix . 'downloads', 'hacklist');
 	}
 
 	public static function depends_on()
@@ -31,6 +32,12 @@ class remove_hacklist extends \phpbb\db\migration\migration
 				],
 			],
 		];
+	}
+
+	public function revert_schema()
+	{
+		// dl_schema handles full table recreation on purge
+		return [];
 	}
 
 	public function update_data()

@@ -44,7 +44,6 @@ class acp_files_controller implements acp_files_interface
 	protected $dlext_table_dl_favorites;
 	protected $dlext_table_dl_fields_data;
 	protected $dlext_table_dl_images;
-	protected $dlext_table_dl_notraf;
 	protected $dlext_table_dl_ratings;
 	protected $dlext_table_dl_stats;
 	protected $dlext_table_dl_ver_files;
@@ -76,7 +75,6 @@ class acp_files_controller implements acp_files_interface
 	 * @param string								$dlext_table_dl_favorites
 	 * @param string								$dlext_table_dl_fields_data
 	 * @param string								$dlext_table_dl_images
-	 * @param string								$dlext_table_dl_notraf
 	 * @param string								$dlext_table_dl_ratings
 	 * @param string								$dlext_table_dl_stats
 	 * @param string								$dlext_table_dl_ver_files
@@ -106,7 +104,6 @@ class acp_files_controller implements acp_files_interface
 		$dlext_table_dl_favorites,
 		$dlext_table_dl_fields_data,
 		$dlext_table_dl_images,
-		$dlext_table_dl_notraf,
 		$dlext_table_dl_ratings,
 		$dlext_table_dl_stats,
 		$dlext_table_dl_ver_files,
@@ -131,7 +128,6 @@ class acp_files_controller implements acp_files_interface
 		$this->dlext_table_dl_favorites		= $dlext_table_dl_favorites;
 		$this->dlext_table_dl_fields_data	= $dlext_table_dl_fields_data;
 		$this->dlext_table_dl_images		= $dlext_table_dl_images;
-		$this->dlext_table_dl_notraf		= $dlext_table_dl_notraf;
 		$this->dlext_table_dl_ratings		= $dlext_table_dl_ratings;
 		$this->dlext_table_dl_stats			= $dlext_table_dl_stats;
 		$this->dlext_table_dl_ver_files		= $dlext_table_dl_ver_files;
@@ -295,10 +291,6 @@ class acp_files_controller implements acp_files_interface
 					WHERE id = ' . (int) $df_id;
 				$this->db->sql_query($sql);
 
-				$sql = 'DELETE FROM ' . $this->dlext_table_dl_notraf . '
-					WHERE dl_id = ' . (int) $df_id;
-				$this->db->sql_query($sql);
-
 				$sql = 'DELETE FROM ' . $this->dlext_table_dl_fields_data . '
 					WHERE df_id = ' . (int) $df_id;
 				$this->db->sql_query($sql);
@@ -448,7 +440,7 @@ class acp_files_controller implements acp_files_interface
 
 		if ($action == '')
 		{
-			$sql = 'SELECT hack_version, file_name, real_file, description, desc_uid, desc_bitfield, desc_flags, id, free, extern, test, cat, klicks, overall_klicks, file_traffic, file_size, approve
+			$sql = 'SELECT hack_version, file_name, real_file, description, desc_uid, desc_bitfield, desc_flags, id, free, extern, test, cat, klicks, overall_klicks, file_size, approve
 					FROM ' . $this->dlext_table_downloads . '
 				WHERE cat = ' . (int) $dl_cat . '
 				ORDER BY sort';
@@ -489,16 +481,6 @@ class acp_files_controller implements acp_files_interface
 
 				$file_klicks			= $row['klicks'];
 				$file_overall_klicks	= $row['overall_klicks'];
-				$file_traffic			= $row['file_traffic'];
-
-				if ($file_traffic && !$this->config['dl_traffic_off'])
-				{
-					$file_traffic = $this->dlext_format->dl_size($file_traffic);
-				}
-				else
-				{
-					$file_traffic = $this->language->lang('DL_NOT_AVAILABLE');
-				}
 
 				if ($row['file_size'])
 				{
@@ -524,7 +506,7 @@ class acp_files_controller implements acp_files_interface
 					'DL_FILE_SIZE'			=> $file_size_kb,
 					'DL_FILE_FREE_EXTERN'	=> $file_free_extern_out,
 					'DL_FILE_KLICKS'		=> $file_klicks,
-					'DL_FILE_TRAFFIC'		=> $file_traffic,
+					'DL_FILE_TRAFFIC'		=> '',
 					'DL_UNAPPROVED'			=> $unapprove,
 					'DL_OVERALL_KLICKS'		=> $file_overall_klicks,
 					'DL_VERSION'			=> $version,

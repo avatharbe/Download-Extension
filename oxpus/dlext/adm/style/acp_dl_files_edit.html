@@ -68,12 +68,6 @@
 </fieldset>
 {% endif %}
 
-{% if S_DL_UPLOAD_TRAFFIC %}
-<div class="error">
-	<div><strong>{{ lang('DL_UPLOAD_TRAFFIC') }}</strong></div>
-</div>
-{% endif %}
-
 <fieldset>
 
 	<legend>{{ DL_ACTION_MODE }}</legend>
@@ -170,20 +164,6 @@
 			</select>
 		</dd>
 	</dl>
-	{% if not S_DL_TRAFFIC %}
-	<dl>
-		<dt><label>{{ lang('DL_TRAFFIC') }}</label></dt>
-		<dd>
-			<a class="help" data-key="DL_TRAFFIC"><i class="icon fa-question-circle fa-fw"></i></a>
-			<input type="text" name="file_traffic" size="10" maxlength="10" value="{{ DL_TRAFFIC }}">
-			<select name="dl_t_quote">
-				{% for dl_t_quote_select in loops.dl_t_quote_select %}
-				<option value="{{ dl_t_quote_select.DL_VALUE }}"{% if dl_t_quote_select.DL_VALUE eq S_DL_TRAFFIC_RANGE %} selected{% endif %}>{{ dl_t_quote_select.DL_LANG }}</option>
-				{% endfor %}
-			</select>
-		</dd>
-	</dl>
-	{% endif %}
 
 </fieldset>
 

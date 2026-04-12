@@ -14,7 +14,8 @@ class remove_bug_tracker extends \phpbb\db\migration\migration
 {
 	public function effectively_installed()
 	{
-		return !$this->db_tools->sql_table_exists($this->table_prefix . 'dl_bug_tracker');
+		return !$this->db_tools->sql_table_exists($this->table_prefix . 'dl_bug_tracker')
+			&& !$this->db_tools->sql_table_exists($this->table_prefix . 'dl_bug_history');
 	}
 
 	public static function depends_on()
@@ -35,6 +36,12 @@ class remove_bug_tracker extends \phpbb\db\migration\migration
 				],
 			],
 		];
+	}
+
+	public function revert_schema()
+	{
+		// dl_schema handles full table recreation on purge
+		return [];
 	}
 
 	public function update_data()

@@ -20,7 +20,6 @@ services:
             - '@dbal.conn'
             - '@oxpus.dlext.helpers.constants'
             - '%oxpus.dlext.tables.dl_auth%'
-            - '%oxpus.dlext.tables.dl_cat_traf%'
             - '%oxpus.dlext.tables.dl_ext_blacklist%'
             - '%oxpus.dlext.tables.downloads%'
             - '%oxpus.dlext.tables.dl_cat%'
