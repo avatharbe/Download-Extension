@@ -2,9 +2,9 @@
 	"name": "oxpus/dlext",
 	"type": "phpbb-extension",
 	"description": "Download Extension",
-	"homepage": "https://phpbb3.oxpus.net",
-	"version": "8.3.1",
-	"time": "2025-11-02",
+	"homepage": "https://github.com/avatharbe/Download-Extension",
+	"version": "9.0.0",
+	"time": "2026-04-12",
 	"license": "GPL-2.0-only",
 	"authors": [{
 			"name": "Karsten Ude",
@@ -18,12 +18,13 @@
 	"extra": {
 		"display-name": "Hotschi's Downloads",
 		"soft-require": {
-			"phpbb/phpbb": ">=3.2,<4.0.0@dev"
+			"phpbb/phpbb": ">=3.3,<4.0.0@dev"
 		},
 		"version-check": {
-			"host": "www.oxpus.net",
-			"directory": "/ext_check",
-			"filename": "dl_ext-version.json"
+			"host": "raw.githubusercontent.com",
+			"directory": "/avatharbe/Download-Extension/dev/oxpus/dlext",
+			"filename": "version-check.json",
+			"ssl": true
 		}
 	}
 }
