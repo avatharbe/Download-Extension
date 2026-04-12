@@ -502,7 +502,6 @@ class acp_cat_edit_controller implements acp_cat_edit_interface
 				generate_text_for_storage($rules, $rules_uid, $rules_bitfield, $rules_flags, $allow_bbcode, $this->dlext_constants::DL_TRUE, $allow_smilies);
 			}
 
-
 			// Move files, if the path was changed
 			if ($cat_id && $index[$cat_id]['path'] != $path)
 			{
