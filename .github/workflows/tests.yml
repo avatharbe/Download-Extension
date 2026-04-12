@@ -1,26 +1,21 @@
 name: Tests
 
 on:
-  push:           # Run tests when commits are pushed to these branches in your repo,
-    branches:     # ... or remove this branches section to run tests on all your branches
-      - main      # Main production branch
-      - master    # Legacy or alternative main branch
-      - dev/*     # Any feature branches under "dev/", e.g., dev/new-feature
-  
-  pull_request:   # Run tests when pull requests are made on these branches in your repo,
-    branches:     # ... or remove this branches section to run tests on all your branches
+  push:
+    branches:
       - main
-      - master
-      - dev/*
+      - dev
+      - 'develop-*'
+  pull_request:
+    branches:
+      - main
+      - dev
 
 jobs:
-  call-tests:
-    name: Extension tests
+  test:
     uses: phpbb-extensions/test-framework/.github/workflows/tests.yml@3.3.x
     with:
-      EXTNAME: oxpus/Download-Extension   # Your extension vendor/package name (required)
-      RUN_MYSQL_JOBS: 0
-      RUN_PGSQL_JOBS: 0
+      EXTNAME: 'oxpus/dlext'
+      PRIMARY_PHP_VERSION: '8.1'
+      PHP_VERSION_MATRIX: '["8.1", "8.2", "8.3", "8.4"]'
       RUN_MSSQL_JOBS: 0
-      RUN_WINDOWS_JOBS: 0
-      PRIMARY_PHP_VERSION: '8.4'
