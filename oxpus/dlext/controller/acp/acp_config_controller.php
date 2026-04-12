@@ -154,7 +154,6 @@ class acp_config_controller implements acp_config_interface
 						'dl_active'			=> ['lang' => 'DL_ACTIVE',				'validate' => 'bool',	'type' => 'switch:yes_no',	'explain' => $this->dlext_constants::DL_FALSE,		'help_key' => 'DL_ACTIVE'],
 						'dl_traffic_off'	=> ['lang' => 'DL_TRAFFIC_OFF',			'validate' => 'bool',	'type' => 'switch:yes_no',	'explain' => $this->dlext_constants::DL_FALSE,		'help_key' => 'DL_TRAFFIC_OFF'],
 						'dl_stop_uploads'	=> ['lang' => 'DL_STOP_UPLOADS',		'validate' => 'bool',	'type' => 'switch:yes_no',	'explain' => $this->dlext_constants::DL_FALSE,		'help_key' => 'DL_STOP_UPLOADS'],
-						'dl_use_hacklist'	=> ['lang' => 'DL_USE_HACKLIST',		'validate' => 'bool',	'type' => 'switch:yes_no',	'explain' => $this->dlext_constants::DL_FALSE,		'help_key' => 'DL_USE_HACKLIST'],
 						'dl_todo_onoff'		=> ['lang' => 'DL_USE_TODOLIST',		'validate' => 'bool',	'type' => 'switch:yes_no',	'explain' => $this->dlext_constants::DL_FALSE,		'help_key' => 'DL_USE_TODOLIST'],
 
 						'legend2'				=> '',
@@ -209,7 +208,6 @@ class acp_config_controller implements acp_config_interface
 						'legend4'				=> '',
 
 						'dl_nav_link_main'			=> ['lang' => 'DL_NAV_LINK_MAIN',			'validate' => 'string',	'type' => 'select',			'explain' => $this->dlext_constants::DL_FALSE,		'help_key' => $this->dlext_constants::DL_FALSE,		'function' => [$this, 'select_nav_link_pos'],	'params' => ['{CONFIG_VALUE}']],
-						'dl_nav_link_hacks'			=> ['lang' => 'DL_NAV_LINK_HACKS',			'validate' => 'string',	'type' => 'select',			'explain' => $this->dlext_constants::DL_FALSE,		'help_key' => $this->dlext_constants::DL_FALSE,		'function' => [$this, 'select_nav_link_pos'],	'params' => ['{CONFIG_VALUE}']],
 						'legend5'				=> '',
 
 						'dl_thumbs_display_cat'		=> ['lang' => 'DL_THUMB_DISPLAY_CAT',		'validate' => 'int',	'type' => 'select',		'explain' => $this->dlext_constants::DL_FALSE,		'help_key' => $this->dlext_constants::DL_FALSE,		'function' => [$this, 'select_thumb_display'],	'params' => ['{CONFIG_VALUE}']],

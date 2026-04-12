@@ -121,7 +121,7 @@
 			</dl>
 			{% endif %}
 
-			{% if S_DL_HACKLIST and DL_HACK_AUTHOR %}
+			{% if DL_HACK_AUTHOR %}
 			<dl>
 				<dt><label>{{ lang('DL_HACK_AUTOR') }}</label></dt>
 				<dd class="lastpost dl-cell-block">
@@ -150,7 +150,7 @@
 				<dd class="lastpost dl-cell-block"><label>{{ DL_FILE_KLICKS }} / {{ DL_FILE_OVERALL_KLICKS }}</label></dd>
 			</dl>
 			{% endif %}
-			{% if S_DL_HACKLIST and DL_HACK_DL_URL %}
+			{% if DL_HACK_DL_URL %}
 			<dl>
 				<dt><label>{{ lang('DL_HACK_DL_URL') }}</label></dt>
 				<dd class="lastpost dl-cell-block"><label><a href="{{ DL_HACK_DL_URL }}">{{ lang('DL_DOWNLOAD') }}</a></label></dd>

@@ -187,22 +187,10 @@
 
 </fieldset>
 
-{% if S_DL_USE_HACKLIST %}
 <fieldset>
 
-	<legend>{{ lang('DL_HACKS_LIST') }}</legend>
+	<legend>{{ lang('DL_MOD_LIST_SHORT') }}</legend>
 
-	<dl>
-		<dt><label>{{ lang('DL_HACKLIST') }}</label></dt>
-		<dd>
-			<a class="help" data-key="DL_HACKLIST"><i class="icon fa-question-circle fa-fw"></i></a>
-			<select name="hacklist">
-				{% for dl_hacklist_select in loops.dl_hacklist_select %}
-				<option value="{{ dl_hacklist_select.DL_VALUE }}"{% if dl_hacklist_select.DL_VALUE eq S_DL_HACKLIST %} selected{% endif %}>{{ dl_hacklist_select.DL_LANG }}</option>
-				{% endfor %}
-			</select>
-		</dd>
-	</dl>
 	<dl>
 		<dt><label>{{ lang('DL_HACK_AUTOR') }}</label></dt>
 		<dd>
@@ -233,7 +221,6 @@
 	</dl>
 
 </fieldset>
-{% endif %}
 
 {% if S_DL_ALLOW_EDIT_MOD_DESC or S_DL_TODO_LINK_ONOFF %}
 <fieldset>
