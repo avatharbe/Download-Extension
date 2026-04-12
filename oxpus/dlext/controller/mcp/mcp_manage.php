@@ -42,7 +42,6 @@ class mcp_manage
 
 	protected $dlext_table_dl_comments;
 	protected $dlext_table_dl_favorites;
-	protected $dlext_table_dl_fields_data;
 	protected $dlext_table_dl_images;
 	protected $dlext_table_dl_ratings;
 	protected $dlext_table_dl_reports;
@@ -79,7 +78,6 @@ class mcp_manage
 	 * @param \oxpus\dlext\core\helpers\footer		$dlext_footer
 	 * @param string								$dlext_table_dl_comments
 	 * @param string								$dlext_table_dl_favorites
-	 * @param string								$dlext_table_dl_fields_data
 	 * @param string								$dlext_table_dl_images
 	 * @param string								$dlext_table_dl_ratings
 	 * @param string								$dlext_table_dl_reports
@@ -114,7 +112,6 @@ class mcp_manage
 		\oxpus\dlext\core\helpers\footer $dlext_footer,
 		$dlext_table_dl_comments,
 		$dlext_table_dl_favorites,
-		$dlext_table_dl_fields_data,
 		$dlext_table_dl_images,
 		$dlext_table_dl_ratings,
 		$dlext_table_dl_reports,
@@ -141,7 +138,6 @@ class mcp_manage
 
 		$this->dlext_table_dl_comments		= $dlext_table_dl_comments;
 		$this->dlext_table_dl_favorites		= $dlext_table_dl_favorites;
-		$this->dlext_table_dl_fields_data	= $dlext_table_dl_fields_data;
 		$this->dlext_table_dl_images		= $dlext_table_dl_images;
 		$this->dlext_table_dl_ratings		= $dlext_table_dl_ratings;
 		$this->dlext_table_dl_reports		= $dlext_table_dl_reports;
@@ -492,10 +488,6 @@ class mcp_manage
 
 						$sql = 'DELETE FROM ' . $this->dlext_table_dl_ver_files . '
 							WHERE ' . $this->db->sql_in_set('dl_id', $dlo_id);
-						$this->db->sql_query($sql);
-
-						$sql = 'DELETE FROM ' . $this->dlext_table_dl_fields_data . '
-							WHERE ' . $this->db->sql_in_set('df_id', $dlo_id);
 						$this->db->sql_query($sql);
 
 						$sql = 'DELETE FROM ' . $this->dlext_table_dl_ratings . '

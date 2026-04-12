@@ -40,7 +40,6 @@ $lang = array_merge($lang, [
 	'ACL_A_DL_STATS'		=> 'Peut voir et gérer les statistiques.',
 	'ACL_A_DL_BLACKLIST'	=> 'Peut gérer la liste noire des extensions de fichier.',
 	'ACL_A_DL_TOOLBOX'		=> 'Peut utiliser la boite à outils.',
-	'ACL_A_DL_FIELDS'		=> 'Peut gérer les champs définis par l’utilisateur.',
 	'ACL_A_DL_PERM_CHECK'	=> 'Peut vérifier les permissions utilisateurs.',
 	'ACL_A_DL_ASSISTANT'	=> 'Peut exécuter l’assistant de configuration',
 ]);

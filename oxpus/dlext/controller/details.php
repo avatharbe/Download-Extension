@@ -39,7 +39,6 @@ class details
 	protected $dlext_status;
 	protected $dlext_constants;
 	protected $dlext_footer;
-	protected $dlext_fields;
 
 	protected $dlext_table_dl_comments;
 	protected $dlext_table_dl_favorites;
@@ -74,7 +73,6 @@ class details
 	 * @param \oxpus\dlext\core\status				$dlext_status
 	 * @param \oxpus\dlext\core\helpers\constants	$dlext_constants
 	 * @param \oxpus\dlext\core\helpers\footer		$dlext_footer
-	 * @param \oxpus\dlext\core\fields\fields		$dlext_fields
 	 * @param string								$dlext_table_dl_favorites
 	 * @param string								$dlext_table_dl_hotlink
 	 * @param string								$dlext_table_dl_images
@@ -105,7 +103,6 @@ class details
 		\oxpus\dlext\core\status $dlext_status,
 		\oxpus\dlext\core\helpers\constants $dlext_constants,
 		\oxpus\dlext\core\helpers\footer $dlext_footer,
-		\oxpus\dlext\core\fields\fields $dlext_fields,
 		$dlext_table_dl_favorites,
 		$dlext_table_dl_hotlink,
 		$dlext_table_dl_images,
@@ -146,7 +143,6 @@ class details
 		$this->dlext_status				= $dlext_status;
 		$this->dlext_constants			= $dlext_constants;
 		$this->dlext_footer				= $dlext_footer;
-		$this->dlext_fields				= $dlext_fields;
 	}
 
 	public function handle()
@@ -1077,24 +1073,6 @@ class details
 			}
 		}
 
-		$dl_fields = $this->dlext_fields->generate_profile_fields_template('grab', $file_id);
-		$dl_fields = (isset($dl_fields[$file_id])) ? $this->dlext_fields->generate_profile_fields_template('show', $this->dlext_constants::DL_FALSE, $dl_fields[$file_id]) : [];
-		$s_dl_fields = $this->dlext_constants::DL_FALSE;
-
-		if (!empty($dl_fields['row']))
-		{
-			$s_dl_fields = $this->dlext_constants::DL_TRUE;
-			$this->template->assign_vars($dl_fields['row']);
-
-			if (!empty($dl_fields['blockrow']))
-			{
-				foreach ($dl_fields['blockrow'] as $field_data)
-				{
-					$this->template->assign_block_vars('dl_custom_fields', $field_data);
-				}
-			}
-		}
-
 		/**
 		 * Calculate or Display additional data
 		 *
@@ -1115,7 +1093,7 @@ class details
 			0 => $this->language->lang('DL_DETAIL'),
 			1 => ($ver_tab) ? $this->language->lang('DL_VERSIONS') : '',
 			2 => ($s_comments_tab) ? $this->language->lang('DL_COMMENTS') : '',
-			3 => ($s_mod_list_on || $s_mod_todo || $s_dl_fields) ? $this->language->lang('DL_MOD_LIST_SHORT') : '',
+			3 => ($s_mod_list_on || $s_mod_todo) ? $this->language->lang('DL_MOD_LIST_SHORT') : '',
 			4 => ($hash_tab) ? $this->language->lang('DL_MOD_FILE_HASH_TABLE') : '',
 		];
 
@@ -1148,7 +1126,7 @@ class details
 		}
 
 		$this->template->assign_vars([
-			'S_DL_DETAIL_EXTRA_TAB'	=> ($s_mod_list_on  || $s_mod_todo || $s_dl_fields) ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
+			'S_DL_DETAIL_EXTRA_TAB'	=> ($s_mod_list_on  || $s_mod_todo) ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
 			'S_DL_DETAIL_HASH_TAB'	=> ($hash_tab) ? $this->dlext_constants::DL_TRUE : $this->dlext_constants::DL_FALSE,
 		]);
 
