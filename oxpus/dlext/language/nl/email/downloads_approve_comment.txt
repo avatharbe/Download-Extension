@@ -1,0 +1,16 @@
+Subject: Nieuwe downloadopmerking
+
+Hallo {{ USERNAME }},
+
+U ontvangt deze e-mail omdat er een nieuwe of bewerkte downloadopmerking is voor "{{ DOWNLOAD }}" op "{{ SITENAME }}" in de categorie "{{ CATEGORY }}" die wacht op goedkeuring.
+
+Als u deze opmerking wilt goedkeuren, klik dan op de volgende link:
+
+{{ U_APPROVE }}
+
+Of u kunt deze opmerking bekijken via deze link:
+
+{{ U_DOWNLOAD }}
+
+
+{{ EMAIL_SIG }}

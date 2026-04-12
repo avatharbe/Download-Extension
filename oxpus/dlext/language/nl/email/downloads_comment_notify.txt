@@ -1,0 +1,18 @@
+Subject: Nieuwe downloadopmerking
+
+Hallo {{ USERNAME }},
+
+U ontvangt deze e-mail omdat er een nieuwe downloadopmerking is op "{{ SITENAME }}" voor een van uw geabonneerde downloads:
+
+---------------------------
+Categorie {{ CATEGORY }}
+Download {{ DOWNLOAD }}
+---------------------------
+
+Als u deze opmerking wilt bekijken, klik dan op de volgende link:
+
+{{ U_DOWNLOAD }}
+
+U kunt er altijd voor kiezen om geen meldingen meer te ontvangen over nieuwe opmerkingen door de betreffende instelling in uw gebruikersprofiel te wijzigen.
+
+{{ EMAIL_SIG }}

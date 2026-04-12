@@ -1,0 +1,12 @@
+Subject: Toegewezen bugmelding op {{ SITENAME }}
+
+Hallo {{ USERNAME }},
+
+U ontvangt deze e-mail omdat er op "{{ SITENAME }}" een bugmelding aan u is toegewezen om aan te werken.
+Voor meer informatie over deze melding volgt u deze link:
+
+{{ U_BUG_REPORT }}
+
+----------------------------
+
+{{ EMAIL_SIG }}
