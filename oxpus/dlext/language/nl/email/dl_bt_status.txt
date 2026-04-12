@@ -1,0 +1,16 @@
+Subject: Nieuwe status voor bugmelding op {{ SITENAME }}
+
+Hallo {{ USERNAME }},
+
+U ontvangt deze e-mail omdat de status van uw bugmelding "{{ REPORT_TITLE }}" op "{{ SITENAME }}" is gewijzigd.
+Nieuwe status: {{ STATUS }}.
+
+{{ STATUS_TEXT }}
+
+Voor meer informatie volgt u deze link:
+
+{{ U_BUG_REPORT }}
+
+----------------------------
+
+{{ EMAIL_SIG }}
