@@ -284,7 +284,65 @@ class download implements download_interface
 				$file_name = '';
 			}
 
-			if ($df_id && !$file_extern)
+			// Convert external download to managed: fetch file from URL
+			if ($df_id && !$file_extern && $dl_file['extern'])
+			{
+				$extern_url = $dl_file['file_name'];
+
+				// Derive original filename from URL
+				$url_path = parse_url($extern_url, PHP_URL_PATH);
+				$original_name = $url_path ? basename($url_path) : '';
+
+				if ($original_name)
+				{
+					$extension = str_replace('.', '', trim(strrchr(strtolower($original_name), '.')));
+
+					if ($this->config['dl_enable_blacklist'] && in_array($extension, $ext_blacklist))
+					{
+						$dl_error = $this->dlext_constants::DL_TRUE;
+						$error[] = $this->language->lang('DL_FORBIDDEN_EXTENSION');
+					}
+					else
+					{
+						$new_real_file = $this->dlext_format->dl_hash($original_name) . '.' . $extension;
+
+						while ($this->filesystem->exists($this->dlext_constants->get_value('files_dir') . '/downloads/' . $file_path . $new_real_file))
+						{
+							$new_real_file = $this->dlext_format->dl_hash($original_name . microtime()) . '.' . $extension;
+						}
+
+						$dest_path = $this->dlext_constants->get_value('files_dir') . '/downloads/' . $file_path . $new_real_file;
+
+						// Add protocol if missing
+						$fetch_url = $extern_url;
+						if (strpos(strtolower($fetch_url), 'http') !== 0)
+						{
+							$fetch_url = 'https://' . $fetch_url;
+						}
+
+						$file_content = @file_get_contents($fetch_url);
+
+						if ($file_content !== false)
+						{
+							file_put_contents($dest_path, $file_content);
+							$file_name = $original_name;
+							$file_size = sprintf('%u', filesize($dest_path));
+							$real_file_old = $new_real_file;
+						}
+						else
+						{
+							$dl_error = $this->dlext_constants::DL_TRUE;
+							$error[] = $this->language->lang('DL_FILE_NOT_FOUND', $original_name, $fetch_url);
+						}
+					}
+				}
+				else
+				{
+					$dl_error = $this->dlext_constants::DL_TRUE;
+					$error[] = $this->language->lang('DL_NO_FILENAME_ENTERED');
+				}
+			}
+			else if ($df_id && !$file_extern)
 			{
 				$index_new = $this->dlext_main->full_index($file_cat_old);
 
