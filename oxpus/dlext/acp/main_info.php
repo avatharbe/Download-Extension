@@ -45,9 +45,6 @@ class main_info
 				'toolbox'		=> [
 					'title' => 'DL_MANAGE',						'auth' => 'ext_oxpus/dlext && acl_a_dl_toolbox',		'cat' => ['ACP_DOWNLOADS']
 				],
-				'fields'		=> [
-					'title' => 'DL_ACP_FIELDS',					'auth' => 'ext_oxpus/dlext && acl_a_dl_fields',			'cat' => ['ACP_DOWNLOADS']
-				],
 				'perm_check'	=> [
 					'title' => 'DL_ACP_PERM_CHECK',				'auth' => 'ext_oxpus/dlext && acl_a_dl_perm_check',		'cat' => ['ACP_DOWNLOADS']
 				],

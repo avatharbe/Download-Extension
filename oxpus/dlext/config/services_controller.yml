@@ -45,7 +45,6 @@ services:
             - '@oxpus.dlext.core.status'
             - '@oxpus.dlext.helpers.constants'
             - '@oxpus.dlext.helpers.footer'
-            - '@oxpus.dlext.fields.fields'
             - '%oxpus.dlext.tables.dl_favorites%'
             - '%oxpus.dlext.tables.dl_hotlink%'
             - '%oxpus.dlext.tables.dl_images%'

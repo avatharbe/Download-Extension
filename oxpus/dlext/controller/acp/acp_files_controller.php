@@ -42,7 +42,6 @@ class acp_files_controller implements acp_files_interface
 
 	protected $dlext_table_dl_comments;
 	protected $dlext_table_dl_favorites;
-	protected $dlext_table_dl_fields_data;
 	protected $dlext_table_dl_images;
 	protected $dlext_table_dl_ratings;
 	protected $dlext_table_dl_stats;
@@ -73,7 +72,6 @@ class acp_files_controller implements acp_files_interface
 	 * @param \oxpus\dlext\core\helpers\constants	$dlext_constants
 	 * @param string								$dlext_table_dl_comments
 	 * @param string								$dlext_table_dl_favorites
-	 * @param string								$dlext_table_dl_fields_data
 	 * @param string								$dlext_table_dl_images
 	 * @param string								$dlext_table_dl_ratings
 	 * @param string								$dlext_table_dl_stats
@@ -102,7 +100,6 @@ class acp_files_controller implements acp_files_interface
 		\oxpus\dlext\core\helpers\constants $dlext_constants,
 		$dlext_table_dl_comments,
 		$dlext_table_dl_favorites,
-		$dlext_table_dl_fields_data,
 		$dlext_table_dl_images,
 		$dlext_table_dl_ratings,
 		$dlext_table_dl_stats,
@@ -126,7 +123,6 @@ class acp_files_controller implements acp_files_interface
 
 		$this->dlext_table_dl_comments		= $dlext_table_dl_comments;
 		$this->dlext_table_dl_favorites		= $dlext_table_dl_favorites;
-		$this->dlext_table_dl_fields_data	= $dlext_table_dl_fields_data;
 		$this->dlext_table_dl_images		= $dlext_table_dl_images;
 		$this->dlext_table_dl_ratings		= $dlext_table_dl_ratings;
 		$this->dlext_table_dl_stats			= $dlext_table_dl_stats;
@@ -291,9 +287,6 @@ class acp_files_controller implements acp_files_interface
 					WHERE id = ' . (int) $df_id;
 				$this->db->sql_query($sql);
 
-				$sql = 'DELETE FROM ' . $this->dlext_table_dl_fields_data . '
-					WHERE df_id = ' . (int) $df_id;
-				$this->db->sql_query($sql);
 
 				$sql = 'DELETE FROM ' . $this->dlext_table_dl_ratings . '
 					WHERE dl_id = ' . (int) $df_id;
