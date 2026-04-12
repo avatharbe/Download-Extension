@@ -110,28 +110,6 @@ services:
             - '@oxpus.dlext.core.main'
             - '@oxpus.dlext.helpers.constants'
             - '%oxpus.dlext.tables.dl_ext_blacklist%'
-    oxpus.dlext.acp_fields_controller:
-        class: oxpus\dlext\controller\acp\acp_fields_controller
-        public: true
-        arguments:
-            - '%core.root_path%'
-            - '%core.php_ext%'
-            - '@config'
-            - '@language'
-            - '@request'
-            - '@template'
-            - '@ext.manager'
-            - '@dbal.conn'
-            - '@log'
-            - '@user'
-            - '@oxpus.dlext.fields.fields'
-            - '@oxpus.dlext.fields.admin'
-            - '@oxpus.dlext.core.main'
-            - '@oxpus.dlext.helpers.constants'
-            - '%oxpus.dlext.tables.dl_fields%'
-            - '%oxpus.dlext.tables.dl_fields_data%'
-            - '%oxpus.dlext.tables.dl_fields_lang%'
-            - '%oxpus.dlext.tables.dl_lang%'
     oxpus.dlext.acp_files_controller:
         class: oxpus\dlext\controller\acp\acp_files_controller
         public: true
@@ -155,7 +133,6 @@ services:
             - '@oxpus.dlext.helpers.constants'
             - '%oxpus.dlext.tables.dl_comments%'
             - '%oxpus.dlext.tables.dl_favorites%'
-            - '%oxpus.dlext.tables.dl_fields_data%'
             - '%oxpus.dlext.tables.dl_images%'
             - '%oxpus.dlext.tables.dl_notraf%'
             - '%oxpus.dlext.tables.dl_ratings%'

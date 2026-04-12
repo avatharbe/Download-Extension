@@ -82,7 +82,6 @@ services:
             - '@oxpus.dlext.core.physical'
             - '@oxpus.dlext.core.topic'
             - '@oxpus.dlext.helpers.constants'
-            - '@oxpus.dlext.fields.fields'
             - '%oxpus.dlext.tables.dl_favorites%'
             - '%oxpus.dlext.tables.dl_stats%'
             - '%oxpus.dlext.tables.dl_ver_files%'

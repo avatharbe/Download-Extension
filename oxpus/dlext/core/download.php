@@ -40,7 +40,6 @@ class download implements download_interface
 	protected $dlext_physical;
 	protected $dlext_topic;
 	protected $dlext_constants;
-	protected $dlext_fields;
 
 	protected $dlext_table_dl_favorites;
 	protected $dlext_table_dl_stats;
@@ -75,7 +74,6 @@ class download implements download_interface
 	 * @param \oxpus\dlext\core\physical			$dlext_physical
 	 * @param \oxpus\dlext\core\topic				$dlext_topic
 	 * @param \oxpus\dlext\core\helpers\constants	$dlext_constants
-	 * @param \oxpus\dlext\core\fields\fields		$dlext_fields
 	 * @param string								$dlext_table_dl_favorites
 	 * @param string								$dlext_table_dl_stats
 	 * @param string								$dlext_table_dl_ver_files
@@ -107,7 +105,6 @@ class download implements download_interface
 		\oxpus\dlext\core\physical $dlext_physical,
 		\oxpus\dlext\core\topic $dlext_topic,
 		\oxpus\dlext\core\helpers\constants $dlext_constants,
-		\oxpus\dlext\core\fields\fields $dlext_fields,
 		$dlext_table_dl_favorites,
 		$dlext_table_dl_stats,
 		$dlext_table_dl_ver_files,
@@ -147,7 +144,6 @@ class download implements download_interface
 		$this->dlext_physical			= $dlext_physical;
 		$this->dlext_topic				= $dlext_topic;
 		$this->dlext_constants			= $dlext_constants;
-		$this->dlext_fields				= $dlext_fields;
 	}
 
 	public function dl_submit_download($module, $df_id = 0, $own_edit = 0, $u_action = '')
@@ -224,7 +220,6 @@ class download implements download_interface
 
 		$dl_error = $this->dlext_constants::DL_FALSE;
 		$error = [];
-		$cp_data = [];
 
 		if ($description)
 		{
@@ -504,8 +499,6 @@ class download implements download_interface
 			$file_hash = $this->dlext_format->dl_hash($this->dlext_constants->get_value('files_dir') . '/downloads/' . $file_path . $new_real_file, 'file', $this->config['dl_file_hash_algo']);
 		}
 
-		// validate custom profile fields
-		$this->dlext_fields->submit_cp_field($this->user->get_iso_lang_id(), $cp_data, $error);
 
 		// Stop here, if one or more errors exists
 		if ($dl_error)
@@ -783,8 +776,6 @@ class download implements download_interface
 		$dl_t_id = ($df_id) ? $df_id : $next_id;
 		$df_id = $dl_t_id;
 
-		// Update Custom Fields
-		$this->dlext_fields->update_profile_field_data($dl_t_id, $cp_data);
 
 		if ($index[$cat_id]['statistics'])
 		{
@@ -1340,9 +1331,6 @@ class download implements download_interface
 
 		$this->template->assign_vars($template_ary);
 
-		// Init and display the custom fields with the existing data
-		$this->dlext_fields->get_profile_fields($df_id);
-		$this->dlext_fields->generate_profile_fields($this->user->get_iso_lang_id());
 	}
 
 	public function dl_delete_version($module, $cat_id, $df_id, $u_action = '')
