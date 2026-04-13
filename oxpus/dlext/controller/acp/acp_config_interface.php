@@ -202,27 +202,6 @@ interface acp_config_interface
 	public function select_topic_user($value);
 
 	/**
-	 * Build custom select for global traffic settings
-	 *
-	 * @param string $value current value to preselect the right option
-	 * @param string $total_groups additions select options
-	 * @return string prebuild select element
-	 * @access public
-	 */
-	public function select_traffic($value, $total_groups);
-
-	/**
-	 * Build custom select for multi selects
-	 *
-	 * @param string $value current value to preselect the right option
-	 * @param string $s_select complete prebuild select options
-	 * @param string $select_size define multiselect rows
-	 * @return string prebuild select element
-	 * @access public
-	 */
-	public function select_traffic_multi($field, $s_select, $select_size);
-
-	/**
 	 * Build custom select for textarea inputs
 	 *
 	 * @param string $value current value to preselect the right option
