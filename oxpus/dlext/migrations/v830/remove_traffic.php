@@ -43,8 +43,32 @@ class remove_traffic extends \phpbb\db\migration\migration
 
 	public function revert_schema()
 	{
-		// dl_schema handles full table recreation on purge
-		return [];
+		return [
+			'add_tables' => [
+				$this->table_prefix . 'dl_notraf' => [
+					'COLUMNS'		=> [
+						'user_id'	=> ['UINT', 0],
+						'dl_id'		=> ['INT:11', 0],
+					],
+				],
+				$this->table_prefix . 'dl_cat_traf' => [
+					'COLUMNS'		=> [
+						'cat_id'			=> ['UINT:11', 0],
+						'cat_traffic_use'	=> ['BINT', 0],
+					],
+					'PRIMARY_KEY'	=> 'cat_id'
+				],
+			],
+			'add_columns' => [
+				$this->table_prefix . 'downloads' => [
+					'file_traffic'	=> ['BINT', 0],
+				],
+				$this->table_prefix . 'downloads_cat' => [
+					'cat_traffic'		=> ['BINT', 0],
+					'cat_traffic_use'	=> ['BINT', 0],
+				],
+			],
+		];
 	}
 
 	public function update_data()

@@ -36,8 +36,13 @@ class remove_hacklist extends \phpbb\db\migration\migration
 
 	public function revert_schema()
 	{
-		// dl_schema handles full table recreation on purge
-		return [];
+		return [
+			'add_columns' => [
+				$this->table_prefix . 'downloads' => [
+					'hacklist'	=> ['BOOL', 0],
+				],
+			],
+		];
 	}
 
 	public function update_data()
