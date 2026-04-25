@@ -295,7 +295,7 @@ $lang = array_merge($lang, [
 	'DL_FILTER_STRING'				=> 'Utilisez * ou % comme espace réservé',
 	'DL_FOOTER'						=> 'Mini-statistiques',
 	'DL_FORBIDDEN_EXT_EXPLAIN'		=> 'Extensions de fichier interdites : %s',
-	'DL_FORBIDDEN_EXTENSION'		=> 'Cette extension de fichier n'est actuellement pas autorisée.<br>Veuillez utiliser un autre type de fichier.',
+	'DL_FORBIDDEN_EXTENSION'		=> 'Cette extension de fichier n\'est actuellement pas autorisée.<br>Veuillez utiliser un autre type de fichier.',
 	'DL_FREE'						=> 'Téléchargement libre',
 	'DL_FUNCTION'					=> 'Fonction',
 
@@ -466,7 +466,7 @@ $lang = array_merge($lang, [
 	'DL_NO_INFO'						=> 'Le serveur de vérification de version n’a pu être contacté',
 	'DL_NO_LAST_TIME'					=> ' Aucun téléchargement compté jusqu’à maintenant…',
 	'DL_NO_MOD_TODO'					=> 'Actuellement il n’y a aucune tâche à effectuer',
-	'DL_NO_PERMISSION'					=> 'Vous n'avez pas la permission d'effectuer cette action.',
+	'DL_NO_PERMISSION'					=> 'Vous n\'avez pas la permission d\'effectuer cette action.',
 	'DL_NO_PERMS_COPY'					=> 'Ne pas copier/conserver les permissions actuelles',
 	'DL_NO_SUBJECT'						=> 'Aucun nom de téléchargement spécifié',
 	'DL_NO_UNASSIGNED_FILES'			=> 'Pas de fichiers disponibles.<br>Veuillez télécharger le fichier souhaité sur le serveur, par exemple avec un client FTP, ou intégrer le fichier via le formulaire dans la zone de la carte.',
