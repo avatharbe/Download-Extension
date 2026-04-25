@@ -456,7 +456,11 @@
 {% else %}
 <div class="rules">
 	<div class="inner">
+	{% if not S_USER_LOGGED_IN %}
+		<span>{{ lang('DL_NO_ACCESS_GUEST') }}</span>
+	{% else %}
 		<span>{{ lang('DL_NO_ACCESS') }}</span>
+	{% endif %}
 	</div>
 </div>
 {% endif %}

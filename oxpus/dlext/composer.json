@@ -20,11 +20,10 @@
 		"soft-require": {
 			"phpbb/phpbb": ">=3.3,<4.0.0@dev"
 		},
-		"version-check": {
-			"host": "raw.githubusercontent.com",
-			"directory": "/avatharbe/Download-Extension/dev/oxpus/dlext",
-			"filename": "version-check.json",
-			"ssl": true
-		}
+        "version-check": {
+            "host": "www.avathar.be",
+            "directory": "/versioncheck",
+            "filename": "dlext.json"
+        }
 	}
 }
